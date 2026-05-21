@@ -17,108 +17,223 @@
     fbq('init', '876427262131107');
     fbq('track', 'PageView');
     </script>
+    
     <style>
         body {
-            background-color: #0b0f0e;
+            background: linear-gradient(180deg, #063c24 0%, #031c11 100%);
             color: #fff;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 10px;
+            padding: 15px;
         }
 
         .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
-            padding: 20px;
+            padding: 10px;
         }
 
-        /* DP Section - Using logo.png */
+        /* Profile Photo Container */
         .dp-circle {
-            width: 115px;
-            height: 115px;
+            width: 110px;
+            height: 110px;
             margin: 0 auto 15px;
             border-radius: 50%;
-            border: 3px solid #4ade80;
-            box-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+            border: 3px solid #22c55e;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
             background: #000;
-            overflow: hidden;
+        }
+
+        /* Active Green Dot */
+        .dp-circle::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 14px;
+            height: 14px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            border: 2px solid #063c24;
         }
 
         .dp-circle img {
             width: 100%;
             height: 100%;
+            border-radius: 50%;
             object-fit: cover;
         }
 
-        h1 { color: #4ade80; font-size: 24px; margin: 10px 0; }
-        .sub { color: #ccc; font-size: 14px; margin: 5px 0; }
-        .stats { color: #ffb800; font-size: 14px; margin-bottom: 10px; }
+        /* Typography */
+        h1 { 
+            font-size: 22px; 
+            font-weight: 700;
+            margin: 5px 0 2px 0; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
         
-        .timer-box {
-            color: #ff5f5f;
-            font-size: 18px;
+        .channel-tag {
+            font-size: 15px;
+            color: #22c55e;
             font-weight: bold;
+            margin: 0 0 15px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .trusted-badge {
+            font-size: 15px;
+            color: #ffffff;
             margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
 
+        /* Mini Badges */
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0 25px 0;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #22c55e;
+            font-weight: 500;
+        }
+
+        /* Main Telegram Button */
         .btn {
-            display: block;
-            background: linear-gradient(90deg, #4ade80 0%, #3b82f6 100%);
-            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #22c55e;
+            color: #ffffff;
             text-decoration: none;
-            padding: 16px;
-            border-radius: 50px;
+            padding: 14px;
+            border-radius: 30px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 17px;
             margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            transition: transform 0.2s;
         }
 
-        .feature {
-            background: #1a1f1e;
-            border: 1px solid #333;
-            padding: 12px;
-            border-radius: 12px;
-            margin-bottom: 8px;
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #ffffff;
+        }
+
+        /* Features List Style */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 14px 16px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .feature-sub {
+            font-size: 12px;
+            color: #a3a3a3;
+        }
+
+        /* Timer Box */
+        .timer-box {
+            color: #fca5a5;
             font-size: 14px;
+            margin: 15px 0;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 6px;
+            border-radius: 8px;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #timer { font-weight: bold; }
+
+        /* Quote Section */
+        .quote-box {
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 16px;
+            padding: 15px;
+            margin-top: 25px;
+            font-size: 14px;
+        }
+
+        .quote-text {
+            font-style: italic;
+            color: #e5e7eb;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .quote-sub {
+            font-size: 11px;
+            color: #9ca3af;
         }
 
         .disclaimer {
             font-size: 10px;
-            color: #555;
-            margin-top: 30px;
-            line-height: 1.4;
+            color: #6b7280;
+            margin-top: 20px;
+            line-height: 1.5;
         }
 
-        /* Kunal Section - Separated & Clickable */
+        /* Kunal Section */
         .footer-branding {
-            margin-top: 25px;
-            padding: 10px;
-            border-top: 1px solid #222;
+            margin-top: 20px;
+            padding-top: 10px;
         }
 
         .kunal-btn {
-            color: #4ade80;
+            color: #6b7280;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
-            border: 1px solid #4ade80;
-            padding: 5px 15px;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
-
-        .kunal-btn:hover {
-            background: #4ade80;
-            color: #000;
+            font-size: 11px;
         }
     </style>
 </head>
@@ -130,21 +245,59 @@
     </div>
 
     <h1>Sahil_Mothsra_original_™️</h1>
-    <p class="sub">📊 India's Fast Growing Stock Market Learning Channel</p>
-    <p class="stats">🔥 2,389 Serious Traders Joined in Last 24 Hours</p>
+    <div class="channel-tag">WAY2LAAB</div>
     
+    <div class="trusted-badge">
+        <span style="color: #22c55e;">✓</span> Trusted by thousands of traders
+    </div>
+
+    <div class="badge-container">
+        <div class="badge">24/7 Updates</div>
+        <div class="badge">Free to Join</div>
+    </div>
+
+    <a href="https://t.me/+v_GFlZfMses4ZTI1" class="btn">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+        </svg>
+        Join on Telegram
+    </a>
+
     <div class="timer-box">
         Market Insights Access Ends In: <span id="timer">02:00</span>
     </div>
 
-    <a href="https://t.me/+v_GFlZfMses4ZTI1" class="btn">JOIN OUR LEARNING CHANNEL</a>
+    <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-text">
+            <div class="feature-title">Market Insights & Analysis</div>
+            <div class="feature-sub">Real-time market updates and expert discussions</div>
+        </div>
+    </div>
 
-    <div class="feature">📈 Daily Stock Market Analysis</div>
-    <div class="feature">✅ Intraday & Swing Trading Learning</div>
-    <div class="feature">🛡️ Risk Management & Capital Protection</div>
+    <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <div class="feature-text">
+            <div class="feature-title">Learn Trading Strategies</div>
+            <div class="feature-sub">Investment | Share Market | Trading guidance</div>
+        </div>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-text">
+            <div class="feature-title">Practical Tips & Tricks</div>
+            <div class="feature-sub">Actionable strategies and proven methods</div>
+        </div>
+    </div>
+
+    <div class="quote-box">
+        <div class="quote-text">"Aaj mehnat kar lo, kal naam apna khud banega."</div>
+        <div class="quote-sub">Telegram Id ( For Advertising ) - @maharajads</div>
+    </div>
 
     <p class="disclaimer">
-        Disclaimer: This channel is for educational purposes only. Stock market investments are subject to market risk.
+        Disclaimer: This channel is for educational purposes only. Stock market investments are subject to market risk. 🔥 2,389 Serious Traders Joined in Last 24 Hours.
     </p>
 
     <div class="footer-branding">
